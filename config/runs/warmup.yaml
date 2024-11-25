@@ -1,0 +1,7 @@
+_target_: runs.warmup.Warmup
+warmup:
+  - passes: 200
+  - model: qwen-1.5B
+  - dataset: hellaswag
+
+

@@ -1,0 +1,6 @@
+_target_: main.Benchmark
+defaults:
+  - _self_
+  - runs:
+    - passes
+    - warmup

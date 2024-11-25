@@ -1,0 +1,4 @@
+name: Rowan/hellaswag
+_target_: dataset.Dataset
+split: train
+column: ctx_a

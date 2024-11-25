@@ -1,0 +1,7 @@
+_target_: runs.passes.PassesRun
+
+passes: 200
+model: qwen-1.5B
+dataset: hellaswag
+
+
