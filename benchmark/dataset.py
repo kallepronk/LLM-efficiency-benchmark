@@ -10,3 +10,6 @@ class Dataset:
 
     def get_item(self, row: int):
         return self.content[self.column][row]
+
+    def get_list(self, begin: int, end: int) -> list[str]:
+        return self.content[self.column][begin:end]
