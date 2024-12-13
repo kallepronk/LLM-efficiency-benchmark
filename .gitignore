@@ -253,6 +253,7 @@ cython_debug/
 .idea/*/
 .idea/*/*/
 
+/.idea/*
 
 .benchmark/outputs/
 /outputs
@@ -272,4 +273,3 @@ pyrightconfig.json
 /notebooks/*.txt
 /notebooks/*.csv
 /benchmark/outputs/*/*/*/*
-/requirements.txt
