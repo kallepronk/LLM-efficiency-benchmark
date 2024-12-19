@@ -87,15 +87,10 @@ async def send_request(
     # Assuming `add_generation_prompt` is either not needed or set to true
     pload = {
         "model": model,
-        "messages": [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": prompt.strip()},
-        ],
-        "stream": False,
-        "max_tokens": 1024,
-        "temperature": 0.8,
-        "top_p": 0.95,
-        "stop": ["\nUser:", "<|endoftext|>", "</s>"],
+        "prompt": prompt,
+        "max_tokens": 512,
+        "temperature": 0.0,
+        "stop": STOP_SEQUENCES,
     }
 
     async with aiohttp.ClientSession(timeout=DEFAULT_TIMEOUT) as session:
@@ -164,16 +159,16 @@ async def benchmark(
             result.response = strip_stop_sequence(output["choices"][0]["text"], STOP_SEQUENCES)
             result.num_prompt_tokens = output["usage"]["prompt_tokens"]
             result.num_completion_tokens = output["usage"]["completion_tokens"]
-            result.energy = output["usage"]["energy"]
 
 
 class vLLMRun(Run):
-    def __init__(self, model: str, dataset: Dataset, passes: int, api_url: str, request_rate: float = 0.0):
+    def __init__(self, model: str, dataset: Dataset, passes: int, api_url: str, request_rate: float = float('inf')):
         super().__init__(model, dataset, passes)
+        self.name = "vLLM"
         self.api_url = api_url
         self.request_rate: float = request_rate
 
-    def start(self):
+    async def start(self):
         input_requests = self.dataset.get_list(0, self.passes)
 
         tracker = OfflineEmissionsTracker(
@@ -200,7 +195,7 @@ class vLLMRun(Run):
         )
 
         tracker.start()
-        asyncio.run(benchmark(results, self.model_name, self.api_url, input_requests, self.request_rate))
+        await benchmark(results, self.model_name, self.api_url, input_requests, self.request_rate)
         tracker.stop()
 
         self.emissions_data = tracker.final_emissions_data

@@ -23,6 +23,13 @@ class Benchmark:
             run.start()
             pbar.update()
 
+    async def run_async(self):
+        # Preform the tests
+        pbar = tqdm(total=len(self.runs), desc="Total progress", position=0, leave=True)
+        for run in self.runs:
+            await run.start()
+            pbar.update()
+
 
     def collect_results(self):
         for run in self.runs:
