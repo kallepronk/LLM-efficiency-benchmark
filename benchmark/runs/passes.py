@@ -30,6 +30,6 @@ class PassesRun(Run, ABC):
 
             for sequence in output:
                 self.tokenizer.decode(sequence, skip_special_tokens=True)
-        pbar.update()
+            pbar.update()
         tracker.stop()
         self.emissions_data = tracker.final_emissions_data
