@@ -1,6 +1,7 @@
-name: llm-efficiency-benchmark
+name: Size_test
 services:
-    vllm-openai:
+    70m:
+        container_name: vLLM-pythia-70m
         runtime: nvidia
         deploy:
             resources:
@@ -13,9 +14,129 @@ services:
         volumes:
             - ~/.cache/huggingface:/root/.cache/huggingface
         environment:
-            - HUGGING_FACE_HUB_TOKEN=<secret>
+            - HUGGING_FACE_HUB_TOKEN=${HF_HUB_TOKEN}
         ports:
-            - 8000:8000
+            - 8010:8000
         ipc: host
         image: vllm/vllm-openai:latest
-        command: --model mistralai/Mistral-7B-v0.1
+        command: --model EleutherAI/pythia-70m
+    160m:
+        container_name: vLLM-pythia-160m
+        runtime: nvidia
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: all
+                          capabilities:
+                              - gpu
+        volumes:
+            - ~/.cache/huggingface:/root/.cache/huggingface
+        environment:
+            - HUGGING_FACE_HUB_TOKEN=${HF_HUB_TOKEN}
+        ports:
+            - 8011:8000
+        ipc: host
+        image: vllm/vllm-openai:latest
+        command: --model EleutherAI/pythia-160m
+    410m:
+        container_name: vLLM-pythia-410m
+        runtime: nvidia
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: all
+                          capabilities:
+                              - gpu
+        volumes:
+            - ~/.cache/huggingface:/root/.cache/huggingface
+        environment:
+            - HUGGING_FACE_HUB_TOKEN=${HF_HUB_TOKEN}
+        ports:
+            - 8012:8000
+        ipc: host
+        image: vllm/vllm-openai:latest
+        command: --model EleutherAI/pythia-410m
+    1B:
+        container_name: vLLM-pythia-1B
+        runtime: nvidia
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: all
+                          capabilities:
+                              - gpu
+        volumes:
+            - ~/.cache/huggingface:/root/.cache/huggingface
+        environment:
+            - HUGGING_FACE_HUB_TOKEN=${HF_HUB_TOKEN}
+        ports:
+            - 8013:8000
+        ipc: host
+        image: vllm/vllm-openai:latest
+        command: --model EleutherAI/pythia-1B
+    1.4B:
+        container_name: vLLM-pythia-1.4B
+        runtime: nvidia
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: all
+                          capabilities:
+                              - gpu
+        volumes:
+            - ~/.cache/huggingface:/root/.cache/huggingface
+        environment:
+            - HUGGING_FACE_HUB_TOKEN=${HF_HUB_TOKEN}
+        ports:
+            - 8014:8000
+        ipc: host
+        image: vllm/vllm-openai:latest
+        command: --model EleutherAI/pythia-1.4B
+    2.8B:
+        container_name: vLLM-pythia-2.8B
+        runtime: nvidia
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: all
+                          capabilities:
+                              - gpu
+        volumes:
+            - ~/.cache/huggingface:/root/.cache/huggingface
+        environment:
+            - HUGGING_FACE_HUB_TOKEN=${HF_HUB_TOKEN}
+        ports:
+            - 8015:8000
+        ipc: host
+        image: vllm/vllm-openai:latest
+        command: --model EleutherAI/pythia-2.8B
+    6.9B:
+        container_name: vLLM-pythia-6.9B
+        runtime: nvidia
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: all
+                          capabilities:
+                              - gpu
+        volumes:
+            - ~/.cache/huggingface:/root/.cache/huggingface
+        environment:
+            - HUGGING_FACE_HUB_TOKEN=${HF_HUB_TOKEN}
+        ports:
+            - 8016:8000
+        ipc: host
+        image: vllm/vllm-openai:latest
+        command: --model EleutherAI/pythia-6.9B
