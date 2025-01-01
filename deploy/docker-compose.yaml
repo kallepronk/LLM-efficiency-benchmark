@@ -20,6 +20,7 @@ services:
         ipc: host
         image: vllm/vllm-openai:latest
         command: --model EleutherAI/pythia-70m
+        
     160m:
         container_name: vLLM-pythia-160m
         runtime: nvidia
@@ -79,7 +80,7 @@ services:
             - 8013:8000
         ipc: host
         image: vllm/vllm-openai:latest
-        command: --model EleutherAI/pythia-1B
+        command: --model EleutherAI/pythia-1b
     1.4B:
         container_name: vLLM-pythia-1.4B
         runtime: nvidia

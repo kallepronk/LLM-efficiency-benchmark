@@ -2,7 +2,9 @@ import argparse
 import asyncio
 import datetime
 import json
+import os
 import random
+import docker
 from dataclasses import dataclass, field
 from itertools import count
 from typing import AsyncGenerator
@@ -16,6 +18,7 @@ from tqdm.asyncio import tqdm
 
 from benchmark.dataset import Dataset
 from benchmark.runs.run import Run
+
 
 SYSTEM_PROMPT = "You are an artificial intelligence assistant that gives helpful answers to the user's questions or instructions."
 DEFAULT_TIMEOUT = aiohttp.ClientTimeout(total=3 * 3600)
@@ -65,16 +68,11 @@ class Results:
     client_side_average_power: float = 0.0
     results: list[Result] = field(default_factory=list)
 
-
-
 def strip_stop_sequence(text: str, stop_sequences: list[str]) -> str:
     for stop in stop_sequences:
         if text.endswith(stop):
             return text[:-len(stop)]
     return text
-
-
-
 
 async def send_request(
         result_intermediate: ResultIntermediate,
@@ -160,15 +158,48 @@ async def benchmark(
             result.num_prompt_tokens = output["usage"]["prompt_tokens"]
             result.num_completion_tokens = output["usage"]["completion_tokens"]
 
+def start_container(client: docker.DockerClient, model: str, port: int):
+    try:
+        if client.containers.get(f"vLLM-{model.split('/')[1]}").attrs['State']['Status'] == 'RUNNING':
+            return True
+    except: 
+        print("no container of model found")
+
+    params = f"--model {model}"
+    container = client.containers.run(
+        "vllm/vllm-openai:latest", 
+        command=params,
+        name=f"vLLM-{model.split('/')[1]}", runtime="nvidia", 
+        ports={8000: 8888}, ipc_mode="host", detach=True
+        )
+    print("starting container")
+    
+    timeout = 30
+    pauze = 4
+    elapsed_time = 0
+    while container.status != 'RUNNING' and elapsed_time < timeout:
+        time.sleep(pauze)
+        elapsed_time += pauze
+        print(f"elapsed time: {elapsed_time} - Status: {container.status}")
+        continue
+    return True
+
+def stop_container(client: docker.DockerClient, model: str):
+    for container in client.containers.list():
+        if container.name != f"vLLM-{model.split('/')[1]}":
+            container.stop()
 
 class vLLMRun(Run):
-    def __init__(self, model: str, dataset: Dataset, passes: int, api_url: str, request_rate: float = float('inf')):
+    def __init__(self, model: str, dataset: Dataset, passes: int, request_rate: float = float('inf')):
         super().__init__(model, dataset, passes)
-        self.name = "vLLM"
-        self.api_url = api_url
+        self.name = f"vLLM-{model.split('/')[1]}"
+        self.api_url = "http://localhost:8888/v1/completions"
         self.request_rate: float = request_rate
+        self.client = docker.from_env()
 
     async def start(self):
+        stop_container(self.client, model=self.model_name)
+        start_container(self.client, model=self.model_name, port=8888)
         input_requests = self.dataset.get_list(0, self.passes)
 
         tracker = OfflineEmissionsTracker(
@@ -199,7 +230,4 @@ class vLLMRun(Run):
         tracker.stop()
 
         self.emissions_data = tracker.final_emissions_data
-
-
-
 
