@@ -160,7 +160,10 @@ async def benchmark(
 
 def start_container(client: docker.DockerClient, model: str, port: int):
     try:
-        if client.containers.get(f"vLLM-{model.split('/')[1]}").attrs['State']['Status'] == 'RUNNING':
+        container =  client.containers.get(f"vLLM-{model.split('/')[1]}")
+        print(container.status)
+        if container.status == "running":
+            print("container already running")
             return True
     except: 
         print("no container of model found")
@@ -174,7 +177,7 @@ def start_container(client: docker.DockerClient, model: str, port: int):
         )
     print("starting container")
     
-    timeout = 30
+    timeout = 120
     pauze = 4
     elapsed_time = 0
     while container.status != 'RUNNING' and elapsed_time < timeout:
