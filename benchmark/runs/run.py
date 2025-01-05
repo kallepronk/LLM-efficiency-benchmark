@@ -15,8 +15,8 @@ class Run:
     def __init__(self, model: str, dataset: Dataset, passes: int):
         self.model_name = model
         self.dataset = dataset
-        self.tokenizer: PreTrainedTokenizer = AutoTokenizer.from_pretrained(model)
-        self.model: PreTrainedModel = AutoModelForCausalLM.from_pretrained(model)
+        #self.tokenizer: PreTrainedTokenizer = AutoTokenizer.from_pretrained(model)
+        #self.model: PreTrainedModel = AutoModelForCausalLM.from_pretrained(model)
         self.passes: int = passes
         self.emissions_data: None | EmissionsData = None
         self.name: str = ""

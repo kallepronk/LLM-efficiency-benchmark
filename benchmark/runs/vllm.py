@@ -177,7 +177,7 @@ def start_container(client: docker.DockerClient, model: str, port: int):
         )
     print("starting container")
     
-    timeout = 120
+    timeout = 200
     pauze = 4
     elapsed_time = 0
     while container.status != 'RUNNING' and elapsed_time < timeout:
