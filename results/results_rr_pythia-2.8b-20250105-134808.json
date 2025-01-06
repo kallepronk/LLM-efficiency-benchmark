@@ -1,0 +1,103 @@
+{
+    "benchmark_name": "rr_pythia-2.8b-20250105-134808",
+    "timestamp": "20250105-140959",
+    "cpu_count": 32,
+    "cpu_model": "13th Gen Intel(R) Core(TM) i9-13900K",
+    "gpu_count": 2,
+    "gpu_model": "2 x NVIDIA GeForce RTX 3090",
+    "os": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "country_name": "Netherlands",
+    "country_iso_code": "NLD",
+    "region": null,
+    "python_version": "3.11.0",
+    "codecarbon_version": "2.8.1",
+    "longtitude": null,
+    "latitude": null,
+    "ram_total_size": 62.69314956665039,
+    "cpu_power": 42.5,
+    "gpu_power": 318.33487922101773,
+    "ram_power": 23.509931087493896,
+    "total_duration": 1020.589040840001,
+    "total_cpu_energy": 0.012048609757720874,
+    "total_gpu_energy": 0.09115310625575967,
+    "total_ram_energy": 0.00666366851880074,
+    "runs": [
+        {
+            "name": "vLLM-pythia-2.8b",
+            "passes": 500,
+            "model": "EleutherAI/pythia-2.8b",
+            "dataset": "Rowan/hellaswag",
+            "timestamp": "2025-01-05T14:01:10",
+            "duration": 498.165343304001,
+            "cpu_energy": 0.005881113404737488,
+            "gpu_energy": 0.04463405209610205,
+            "ram_energy": 0.0032526801694918485
+        },
+        {
+            "name": "vLLM-pythia-2.8b",
+            "passes": 500,
+            "model": "EleutherAI/pythia-2.8b",
+            "dataset": "Rowan/hellaswag",
+            "timestamp": "2025-01-05T14:02:38",
+            "duration": 87.39028989200051,
+            "cpu_energy": 0.001031689955980538,
+            "gpu_energy": 0.007968070541118033,
+            "ram_energy": 0.0005705546005604383
+        },
+        {
+            "name": "vLLM-pythia-2.8b",
+            "passes": 500,
+            "model": "EleutherAI/pythia-2.8b",
+            "dataset": "Rowan/hellaswag",
+            "timestamp": "2025-01-05T14:04:07",
+            "duration": 87.70746890100054,
+            "cpu_energy": 0.0010354343227020777,
+            "gpu_energy": 0.007774719830882182,
+            "ram_energy": 0.0005726606070021135
+        },
+        {
+            "name": "vLLM-pythia-2.8b",
+            "passes": 500,
+            "model": "EleutherAI/pythia-2.8b",
+            "dataset": "Rowan/hellaswag",
+            "timestamp": "2025-01-05T14:05:36",
+            "duration": 87.23907429199971,
+            "cpu_energy": 0.001029904623630614,
+            "gpu_energy": 0.007749189532680334,
+            "ram_energy": 0.0005696003444542059
+        },
+        {
+            "name": "vLLM-pythia-2.8b",
+            "passes": 500,
+            "model": "EleutherAI/pythia-2.8b",
+            "dataset": "Rowan/hellaswag",
+            "timestamp": "2025-01-05T14:07:04",
+            "duration": 86.73125276099927,
+            "cpu_energy": 0.0010239097889284785,
+            "gpu_energy": 0.007689453929335621,
+            "ram_energy": 0.0005662947671907704
+        },
+        {
+            "name": "vLLM-pythia-2.8b",
+            "passes": 500,
+            "model": "EleutherAI/pythia-2.8b",
+            "dataset": "Rowan/hellaswag",
+            "timestamp": "2025-01-05T14:08:32",
+            "duration": 86.71252917799939,
+            "cpu_energy": 0.0010236887133729055,
+            "gpu_energy": 0.007680072532941673,
+            "ram_energy": 0.0005661788844873899
+        },
+        {
+            "name": "vLLM-pythia-2.8b",
+            "passes": 500,
+            "model": "EleutherAI/pythia-2.8b",
+            "dataset": "Rowan/hellaswag",
+            "timestamp": "2025-01-05T14:09:59",
+            "duration": 86.64308251200055,
+            "cpu_energy": 0.0010228689483687732,
+            "gpu_energy": 0.0076575477926997815,
+            "ram_energy": 0.000565699145613974
+        }
+    ]
+}
