@@ -1,0 +1,37 @@
+{
+    "benchmark_name": "redPajama-20250107-131525",
+    "timestamp": "20250107-131712",
+    "cpu_count": 32,
+    "cpu_model": "13th Gen Intel(R) Core(TM) i9-13900K",
+    "gpu_count": 2,
+    "gpu_model": "2 x NVIDIA GeForce RTX 3090",
+    "os": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "country_name": "Netherlands",
+    "country_iso_code": "NLD",
+    "region": null,
+    "python_version": "3.11.0",
+    "codecarbon_version": "2.8.1",
+    "longtitude": null,
+    "latitude": null,
+    "ram_total_size": 62.69314956665039,
+    "cpu_power": 42.5,
+    "gpu_power": 333.22161408398324,
+    "ram_power": 23.509931087493896,
+    "total_duration": 16.84318484800042,
+    "total_cpu_energy": 0.00019884288855902623,
+    "total_gpu_energy": 0.0015966723884480033,
+    "total_ram_energy": 0.00010995457268524062,
+    "runs": [
+        {
+            "name": "vLLM-RedPajama-INCITE-Base-3B-v1",
+            "passes": 100,
+            "model": "togethercomputer/RedPajama-INCITE-Base-3B-v1",
+            "dataset": "Rowan/hellaswag",
+            "timestamp": "2025-01-07T13:17:12",
+            "duration": 16.84318484800042,
+            "cpu_energy": 0.00019884288855902623,
+            "gpu_energy": 0.0015966723884480033,
+            "ram_energy": 0.00010995457268524062
+        }
+    ]
+}

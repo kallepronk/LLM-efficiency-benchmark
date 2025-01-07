@@ -1,0 +1,37 @@
+{
+    "benchmark_name": "Dolly V2-20250107-113633",
+    "timestamp": "20250107-113820",
+    "cpu_count": 32,
+    "cpu_model": "13th Gen Intel(R) Core(TM) i9-13900K",
+    "gpu_count": 2,
+    "gpu_model": "2 x NVIDIA GeForce RTX 3090",
+    "os": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "country_name": "Netherlands",
+    "country_iso_code": "NLD",
+    "region": null,
+    "python_version": "3.11.0",
+    "codecarbon_version": "2.8.1",
+    "longtitude": null,
+    "latitude": null,
+    "ram_total_size": 62.69314956665039,
+    "cpu_power": 42.5,
+    "gpu_power": 325.6238604115468,
+    "ram_power": 23.509931087493896,
+    "total_duration": 17.48269236200008,
+    "total_cpu_energy": 0.0002063925524930568,
+    "total_gpu_energy": 0.0015583409688940033,
+    "total_ram_energy": 0.00011413483156667651,
+    "runs": [
+        {
+            "name": "vLLM-dolly-v2-3b",
+            "passes": 100,
+            "model": "databricks/dolly-v2-3b",
+            "dataset": "Rowan/hellaswag",
+            "timestamp": "2025-01-07T11:38:20",
+            "duration": 17.48269236200008,
+            "cpu_energy": 0.0002063925524930568,
+            "gpu_energy": 0.0015583409688940033,
+            "ram_energy": 0.00011413483156667651
+        }
+    ]
+}

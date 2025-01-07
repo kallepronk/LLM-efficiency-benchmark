@@ -1,0 +1,37 @@
+{
+    "benchmark_name": "pythia-2.8b-20250107-123943",
+    "timestamp": "20250107-124132",
+    "cpu_count": 32,
+    "cpu_model": "13th Gen Intel(R) Core(TM) i9-13900K",
+    "gpu_count": 2,
+    "gpu_model": "2 x NVIDIA GeForce RTX 3090",
+    "os": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "country_name": "Netherlands",
+    "country_iso_code": "NLD",
+    "region": null,
+    "python_version": "3.11.0",
+    "codecarbon_version": "2.8.1",
+    "longtitude": null,
+    "latitude": null,
+    "ram_total_size": 62.69314956665039,
+    "cpu_power": 42.5,
+    "gpu_power": 304.01501119684417,
+    "ram_power": 23.509931087493896,
+    "total_duration": 17.076819519999844,
+    "total_cpu_energy": 0.00020160108528054747,
+    "total_gpu_energy": 0.0015323320591980223,
+    "total_ram_energy": 0.00011148334892513097,
+    "runs": [
+        {
+            "name": "vLLM-pythia-2.8b",
+            "passes": 100,
+            "model": "EleutherAI/pythia-2.8b",
+            "dataset": "Rowan/hellaswag",
+            "timestamp": "2025-01-07T12:41:32",
+            "duration": 17.076819519999844,
+            "cpu_energy": 0.00020160108528054747,
+            "gpu_energy": 0.0015323320591980223,
+            "ram_energy": 0.00011148334892513097
+        }
+    ]
+}
